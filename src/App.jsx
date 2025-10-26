@@ -1,10 +1,15 @@
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <>
-      <h1 className="text-6xl">Let's create Toy store named ToyTopia</h1>
-    </>
+    <Router>
+      <div>
+        <Navbar />
+      </div>
+    </Router>
   );
 }
 
