@@ -70,6 +70,7 @@ const Footer = () => {
           Developed by{" "}
           <a
             href="https://github.com/mdsifat-dev/ToyTopia"
+            target="_blank"
             className="font-bold text-xl hover:text-yellow-300"
           >
             👨🏻‍💻 Muhammad Sifat
