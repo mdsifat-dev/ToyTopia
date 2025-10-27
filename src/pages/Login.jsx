@@ -1,25 +1,63 @@
-// src/pages/Login.jsx
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const { login, googleLogin, currentUser } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate(from, { replace: true });
+    }
+  }, [currentUser, navigate, from]);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+    setError("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(
-      "Login functionality will be implemented with Firebase authentication."
-    );
+
+    if (!formData.email || !formData.password) {
+      setError("Please fill in all fields");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError("");
+      await login(formData.email, formData.password);
+    } catch (error) {
+      setError("Failed to log in: " + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      setLoading(true);
+      setError("");
+      await googleLogin();
+    } catch (error) {
+      setError("Failed to log in with Google: " + error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -31,6 +69,12 @@ const Login = () => {
           </h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          {error && (
+            <div className="alert alert-error">
+              <span>{error}</span>
+            </div>
+          )}
+
           <div className="space-y-4">
             <div className="form-control">
               <input
@@ -68,8 +112,12 @@ const Login = () => {
           </div>
 
           <div>
-            <button type="submit" className="btn btn-primary w-full text-white">
-              Sign in
+            <button
+              type="submit"
+              disabled={loading}
+              className="btn btn-primary w-full text-white"
+            >
+              {loading ? "Signing in..." : "Sign in"}
             </button>
           </div>
 
@@ -78,10 +126,9 @@ const Login = () => {
           <div>
             <button
               type="button"
+              onClick={handleGoogleLogin}
+              disabled={loading}
               className="btn btn-outline w-full"
-              onClick={() =>
-                alert("Google login will be implemented with Firebase")
-              }
             >
               Sign in with Google
             </button>

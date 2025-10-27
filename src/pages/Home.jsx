@@ -96,14 +96,14 @@ const Home = () => {
       </section>
 
       {/* Popular Toys Section */}
-      <section className="container mx-auto px-4 mb-12">
+      <section className=" Popular container mx-auto px-4 mb-12">
         <h2 className="text-4xl font-bold text-center mb-8">Popular Toys</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {popularToys.map((toy) => (
             <div
               key={toy.toyId}
               to={`/toy/${toy.toyId}`}
-              className="card bg-base-100 border border-gray-300 shadow-xl hover:scale-105"
+              className="card bg-base-100 border border-gray-300 shadow-xl hover:scale-105 transition-transform"
             >
               <figure className="px-4 pt-4">
                 <img
