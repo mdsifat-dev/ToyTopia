@@ -81,10 +81,8 @@ const Navbar = () => {
                   />
                 </div>
 
-                {/* Hover Tooltip */}
-                <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
-                  {currentUser.displayName || currentUser.email}
-                  <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
+                <div className="absolute top-full right-0 mt-1 bg-gray-800 text-white text-sm rounded opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity z-50 px-2 pt-1 pb-0 leading-tight whitespace-normal text-right max-w-[150px] wrap-break-word">
+                  {currentUser?.displayName || "User"}
                 </div>
               </div>
 

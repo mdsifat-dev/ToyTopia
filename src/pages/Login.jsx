@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../firebase/config";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -9,9 +11,21 @@ const Login = () => {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const { login, googleLogin, currentUser } = useAuth();
+  const { login, currentUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const from = location.state?.from?.pathname || "/";
 
@@ -48,17 +62,17 @@ const Login = () => {
     }
   };
 
-  const handleGoogleLogin = async () => {
-    try {
-      setLoading(true);
-      setError("");
-      await googleLogin();
-    } catch (error) {
-      setError("Failed to log in with Google: " + error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const handleGoogleLogin = async () => {
+  //   try {
+  //     setLoading(true);
+  //     setError("");
+  //     await googleLogin();
+  //   } catch (error) {
+  //     setError("Failed to log in with Google: " + error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200 py-12 px-4">
@@ -92,7 +106,7 @@ const Login = () => {
 
           <button
             type="button"
-            onClick={handleGoogleLogin}
+            onClick={handleGoogleSignIn}
             disabled={loading}
             className="btn btn-outline w-full gap-3 mb-6"
           >
@@ -180,9 +194,9 @@ const Login = () => {
               Don't have an account?{" "}
               <Link
                 to="/register"
-                className="text-primary font-semibold hover:underline"
+                className="text-primary font-extrabold text-xl hover:underline"
               >
-                Sign up here
+                Sign up
               </Link>
             </p>
           </div>

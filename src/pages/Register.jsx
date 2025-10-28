@@ -72,7 +72,7 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200 py-12 px-4">
-      <div className="max-w-md w-full space-y-8">
+      <div className="max-w-md w-full space-y-8 bg-base-100 p-8 rounded-md">
         <div>
           <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
             Create your account
@@ -202,12 +202,15 @@ const Register = () => {
           </div>
 
           <div className="text-center">
-            <Link
-              to="/login"
-              className="text-primary hover:underline font-medium"
-            >
-              Already have an account? Sign in
-            </Link>
+            <p>
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                className="text-primary hover:underline font-extrabold text-xl"
+              >
+                Sign in
+              </Link>
+            </p>
           </div>
         </form>
       </div>
