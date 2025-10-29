@@ -3,7 +3,7 @@ Welcome to ToyTopia – your premier destination for all things toys! Dive into 
 
 ### [🌐 Live Demo](https://toytopia-mdsifat-dev-firebase.web.app/) 👈Click Here
 
-#### [Alternative Link](https://toytopia-mdsifat-dev.netlify.app/)
+#### [Alternative Link](https://toytopia-mdsifat-dev.netlify.app/) Click if Live Demo doesn't work
 
 
 ### 🚀 Features
