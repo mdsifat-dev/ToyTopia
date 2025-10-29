@@ -20,7 +20,9 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
-        console.log(result.user);
+        // console.log(result.user);
+        const userResult = result.user;
+        console.log(userResult);
       })
       .catch((error) => {
         console.log(error);
