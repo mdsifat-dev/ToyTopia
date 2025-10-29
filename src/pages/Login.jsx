@@ -62,18 +62,6 @@ const Login = () => {
     }
   };
 
-  // const handleGoogleLogin = async () => {
-  //   try {
-  //     setLoading(true);
-  //     setError("");
-  //     await googleLogin();
-  //   } catch (error) {
-  //     setError("Failed to log in with Google: " + error.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200 py-12 px-4">
       <div className="max-w-md w-full space-y-8">

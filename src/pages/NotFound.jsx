@@ -10,7 +10,7 @@ const NotFound = () => {
         <h2 className="text-4xl font-semibold text-gray-800 mb-4">
           Page Not Found
         </h2>
-        <p className=" text-2xl text-gray-600 mb-8">
+        <p className=" text-2xl font-bold text-gray-600 mb-8">
           The page you are looking for is under construction 🏗️
         </p>
         <Link to="/" className="btn btn-primary text-white">

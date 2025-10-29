@@ -88,7 +88,7 @@ const Navbar = () => {
 
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1] p-2 shadow-lg menu menu-sm dropdown-content bg-base-100 rounded-box w-64 border border-base-300"
+                className="mt-3 z-1 p-2 shadow-lg menu menu-sm dropdown-content bg-base-100 rounded-box w-64 border border-base-300"
               >
                 {/* User Header */}
                 <li className="px-4 py-3 border-b border-base-300 bg-base-200 rounded-t-box">

@@ -81,7 +81,7 @@ const ToyDetails = () => {
 
         <div className="max-w-6xl mx-auto bg-base-100 rounded-xl shadow-md overflow-hidden">
           <div className="md:flex">
-            <div className="md:flex-shrink-0 md:w-1/2">
+            <div className="md:shrink-0 md:w-1/2">
               <img
                 className="h-64 w-full object-contain md:h-full md:max-h-96 "
                 src={toy.pictureURL}
